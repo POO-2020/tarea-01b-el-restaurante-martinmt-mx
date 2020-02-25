@@ -3,6 +3,7 @@ import Tiempo from "./tiempo.js"
 import Direccion from "./dirección.js"
 import Precio from "./precio.js"
 import Producto from "./producto.js"
+import ElementoPedido from "./elementoPedido.js"
 class Main{
     probarFecha(){
         let fecha1 = new Fecha(12,4,2022)
@@ -34,6 +35,10 @@ class Main{
         let producto1 = new Producto("Pizza Hawaiana", new Precio(2398.41))
         console.log(producto1.getDescripcion())
     }
+    probarPedido(){
+        let pedido1 = new ElementoPedido(new Producto("Pizza Hawaiana", new Precio (600.50)), 2)
+        console.log(pedido1.getDescripcion())
+    }
 }
 let app = new Main()
 app.probarFecha()
@@ -41,3 +46,4 @@ app.probarTiempo()
 app.probarDireccion()
 app.probarPrecios()
 app.probarProducto()
+app.probarPedido()

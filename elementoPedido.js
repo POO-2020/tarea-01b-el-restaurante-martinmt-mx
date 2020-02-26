@@ -1,5 +1,4 @@
 import Producto from "./producto.js"
-import Precios from "./precio.js"
 export default class ElementoPedido{
     /**
      * 
@@ -11,6 +10,7 @@ export default class ElementoPedido{
         this.cantidad = cantidad
     }
     getDescripcion(){
-        return `${this.cantidad} x ${this.producto.nombre} ${(this.producto.precio).getPrecios()}`
+        let precioFinal = this.cantidad * this.producto.precio.valor
+        return `${this.cantidad} x ${this.producto.nombre} $${new Intl.NumberFormat("en-US").format(precioFinal)}`
     }
 }

@@ -6,9 +6,11 @@ import Producto from "./producto.js"
 import ElementoPedido from "./elementoPedido.js"
 import Cliente from "./cliente.js"
 import Pedido from "./pedido.js"
+import Restaurante from "./restaurante.js"
 class Main{
     constructor(){
         this.pedido1 = new Pedido(new Fecha(3,4,2021), new Tiempo(5,30,"pm"), new Cliente("Martin Mojica Torres", new Direccion("Benito Juarez", 152, 0, "Centro", 22442, "Colima", "Colima"), 3122739451))
+        this.restaurante = new Restaurante("OXXO", 3128889900, new Direccion("Benito Juarez", 152, 0, "Centro", 22442, "Colima", "Colima"))
     }
     probarFecha(){
         let fecha1 = new Fecha(12,4,2022)
@@ -53,6 +55,20 @@ class Main{
         this.pedido1.agregarElemento(elemento)
         console.log(this.pedido1.listarElementos())
     }
+    probarRest(){
+        let producto1 = new Producto("Pizza Hawaiana", new Precio(600.50))
+        let producto2 = new Producto("Pizza Mexicana", new Precio(700))
+        this.restaurante.registrarProducto(producto1)
+        this.restaurante.registrarProducto(producto2)
+        this.restaurante.listarProductos()
+        let pedido = new Pedido(new Fecha(3,4,2021), new Tiempo(5,30,"pm"), new Cliente("Martin Mojica Torres", new Direccion("Benito Juarez", 152, 0, "Centro", 22442, "Colima", "Colima"), 3122739451))
+        let elemento1 = new ElementoPedido(new Producto("Pizza Hawaiana", new Precio(600.50)), 3)
+        let elemento2 = new ElementoPedido(new Producto("Pizza Mexicana", new Precio(700)), 5)
+        pedido.agregarElemento(elemento1)
+        pedido.agregarElemento(elemento2)
+        this.restaurante.registrarPedido(pedido)
+        this.restaurante.listarPedidos()
+    }
 }
 let app = new Main()
 app.probarFecha()
@@ -63,3 +79,4 @@ app.probarProducto()
 app.probarElementoPedido()
 app.probarCliente()
 app.probarPedido()
+app.probarRest()
